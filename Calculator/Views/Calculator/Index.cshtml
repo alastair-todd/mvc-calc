@@ -1,0 +1,24 @@
+﻿@model Calculator.Presentation.Models.MathsView
+@{
+    ViewBag.Title = "Calculator";
+}
+<br />
+<div style="color: red; font-weight:bold; padding:10px 0;">@Model.ErrorMessage</div>
+@using (Html.BeginForm("Calculate", "Calculator", FormMethod.Post))
+    {
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Expression, "Enter your expression:")
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.Expression)
+            @if (Model.Result != null)
+            {
+                <span>
+                    equals @Model.Result
+                </span>
+            }
+        </div>
+    
+        <input type="submit" value="Go" style="margin-top: 4px;" />
+
+    }
